@@ -1,7 +1,9 @@
-from django.shortcuts import render, redirect
-from django.views.generic import ListView, DetailView, CreateView
+from django.core.exceptions import PermissionDenied
+from django.shortcuts import render, redirect, get_object_or_404
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import Post, Category, Tag
+from .forms import CommentForm
 
 
 class PostList(ListView):
@@ -18,10 +20,16 @@ class PostList(ListView):
 class PostDetail(DetailView):
     model = Post
 
+    def get_context_data(self, **kwargs):
+        context = super(PostDetail, self).get_context_data()
+        context['categories'] = Category.objects.all()
+        context['no_category_post_count'] = Post.objects.filter(category=None).count()
+        context['comment_form'] = CommentForm
+        return context
 
 class PostCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = Post
-    fields = ['title', 'content', 'head_image', 'file_upload', 'category']
+    fields = ['title', 'content', 'head_image', 'file_upload', 'category', 'tags']
 
     def test_func(self):
         return self.request.user.is_superuser or self.request.user.is_staff
@@ -33,6 +41,17 @@ class PostCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
             return super(PostCreate, self).form_valid(form)
         else:
             return redirect('/blog/')
+
+
+class PostUpdate(UpdateView, UserPassesTestMixin):
+    model = Post
+    fields = ['title', 'content', 'head_image', 'file_upload', 'category', 'tags']
+
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated and request.user == self.get_object().author:
+            return super(PostUpdate, self).dispatch(request, *args, **kwargs)
+        else:
+            raise PermissionDenied
 
 
 def categories_page(request, slug):
@@ -68,6 +87,26 @@ def tag_page(request, slug):
     }
 
     return render(request, 'blog/post_list.html', context)
+
+
+def add_comment(request, pk):
+    if request.user.is_authenticated:
+        post = get_object_or_404(Post, pk=pk)
+
+        if request.method == "POST":
+            comment_form = CommentForm(request.POST)
+            if comment_form.is_valid():
+                comment = comment_form.save(commit=False)
+                comment.post = post
+                comment.author = request.user
+                comment.save()
+                return redirect(post.get_absolute_url())
+        else:
+            return redirect(post.get_absolute_url())
+    else:
+        raise PermissionDenied
+
+
 
 # def index(request):
 #     posts = Post.objects.all().order_by('-pk')

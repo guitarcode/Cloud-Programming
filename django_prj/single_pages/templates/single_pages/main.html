@@ -6,5 +6,36 @@
 </head>
 <body>
     <h1>메인 페이지 입니다.</h1>
+    {% for p in recent_posts %}
+    <!-- Blog Post -->
+    <div class="card mb-4">
+        {% if p.head_image %}
+        <img class="card-img-top" src="{{ p.head_image.url }}" alt="Card image cap">
+        {% else %}
+        <img class="card-img-top" src="https://picsum.photos/800/200" alt="random_image">
+        {% endif %}
+        {% if p.tags.exists %}
+            <br />
+            <i class = "fas fa-tags" style="display: inline-block">
+            {% for tag in p.tags.iterator %}
+                 | <a style="display: inline;" href = {{ tag.get_absolute_url }} > {{ tag }} </a>
+            {% endfor %}
+            |
+            </i>
+
+        {% endif %}
+
+        <div class="card-body">
+            <h2 class="card-title">{{ p.title}}</h2>
+            <p class="card-text">{{ p.get_content_markdown | truncatewords:45 | safe }}</p>
+            <a href="{{ p.get_absolute_url }}" class="btn btn-primary">Read More &rarr;</a>
+        </div>
+        <div class="card-footer text-muted">
+            Posted on {{ p.created_at}} by
+            <a href="#">{{ p.author }}</a>
+        </div>
+    </div>
+    {% endfor %}
+
 </body>
 </html>
