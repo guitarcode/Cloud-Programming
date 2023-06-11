@@ -21,6 +21,8 @@ from markdownx import urls as markdownx
 
 urlpatterns = [
     path('blog/', include('blog.urls')),
+    path('account-diary/', include('account_diary.urls')),
+
     path('', include('single_pages.urls')),
     path('markdownx/', include(markdownx)),
     path('accounts/', include('allauth.urls')),

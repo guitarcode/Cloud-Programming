@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # my app
     'blog',
     'single_pages',
+    'account_diary',
 
     # extern app
     'crispy_forms',
