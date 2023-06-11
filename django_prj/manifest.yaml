@@ -1,0 +1,7 @@
+---
+applications:
+- name: djangoblog027
+  buildpack: paketo-buildpacks/python
+  memory: 512M
+  instances: 1
+  command: waitress-serve --port=8080 django_prj.wsgi:application

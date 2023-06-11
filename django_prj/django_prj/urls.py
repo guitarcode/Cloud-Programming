@@ -23,8 +23,10 @@ urlpatterns = [
     path('blog/', include('blog.urls')),
     path('', include('single_pages.urls')),
     path('markdownx/', include(markdownx)),
+    path('accounts/', include('allauth.urls')),
 
     path('admin/', admin.site.urls),
+
 ]
 
-urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

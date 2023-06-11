@@ -11,7 +11,6 @@ urlpatterns = [
     path('category/<str:slug>/', views.categories_page),
     path('tag/<str:slug>/', views.tag_page),
 
-    # path('category/no-categories', views.categories_page),
     # path('', views.index),
     # path('<int:pk>', views.post_detail),
 ]
