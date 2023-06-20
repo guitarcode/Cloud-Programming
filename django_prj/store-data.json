@@ -1,0 +1,402 @@
+[
+    {
+        "model": "store.store",
+        "fields": {
+            "id": 24715368,
+            "name": "태평양진주",
+            "industry": "D",
+            "city": 11,
+            "country": 11110
+        }
+    },
+    {
+        "model": "store.store",
+        "fields": {
+            "id": 20659878,
+            "name": "커피빈",
+            "industry": "Q",
+            "city": 11,
+            "country": 11110
+        }
+    },
+    {
+        "model": "store.store",
+        "fields": {
+            "id": 24083787,
+            "name": "대박마트",
+            "industry": "D",
+            "city": 11,
+            "country": 11110
+        }
+    },
+    {
+        "model": "store.store",
+        "fields": {
+            "id": 21778591,
+            "name": "샐리",
+            "industry": "D",
+            "city": 11,
+            "country": 11110
+        }
+    },
+    {
+        "model": "store.store",
+        "fields": {
+            "id": 24414022,
+            "name": "로뎅공방",
+            "industry": "D",
+            "city": 11,
+            "country": 11110
+        }
+    },
+    {
+        "model": "store.store",
+        "fields": {
+            "id": 24580092,
+            "name": "명지사",
+            "industry": "D",
+            "city": 11,
+            "country": 11110
+        }
+    },
+    {
+        "model": "store.store",
+        "fields": {
+            "id": 28523782,
+            "name": "이화가",
+            "industry": "Q",
+            "city": 11,
+            "country": 11110
+        }
+    },
+    {
+        "model": "store.store",
+        "fields": {
+            "id": 26003391,
+            "name": "GAHOEGALLER",
+            "industry": "Q",
+            "city": 11,
+            "country": 11110
+        }
+    },
+    {
+        "model": "store.store",
+        "fields": {
+            "id": 24999295,
+            "name": "베리드",
+            "industry": "D",
+            "city": 11,
+            "country": 11110
+        }
+    },
+    {
+        "model": "store.store",
+        "fields": {
+            "id": 11716408,
+            "name": "에블린",
+            "industry": "D",
+            "city": 11,
+            "country": 11110
+        }
+    },
+    {
+        "model": "store.store",
+        "fields": {
+            "id": 15502813,
+            "name": "국수찾아닭만리",
+            "industry": "Q",
+            "city": 11,
+            "country": 11110
+        }
+    },
+    {
+        "model": "store.store",
+        "fields": {
+            "id": 24079977,
+            "name": "알라딘커뮤니케이션",
+            "industry": "D",
+            "city": 11,
+            "country": 11110
+        }
+    },
+    {
+        "model": "store.store",
+        "fields": {
+            "id": 20671358,
+            "name": "동남식당",
+            "industry": "Q",
+            "city": 11,
+            "country": 11110
+        }
+    },
+    {
+        "model": "store.store",
+        "fields": {
+            "id": 23915414,
+            "name": "인사동노래연습장",
+            "industry": "N",
+            "city": 11,
+            "country": 11110
+        }
+    },
+    {
+        "model": "store.store",
+        "fields": {
+            "id": 23667164,
+            "name": "대송",
+            "industry": "Q",
+            "city": 11,
+            "country": 11110
+        }
+    },
+    {
+        "model": "store.store",
+        "fields": {
+            "id": 28515006,
+            "name": "황후쥬얼리",
+            "industry": "D",
+            "city": 11,
+            "country": 11110
+        }
+    },
+    {
+        "model": "store.store",
+        "fields": {
+            "id": 21765741,
+            "name": "건후사",
+            "industry": "D",
+            "city": 11,
+            "country": 11110
+        }
+    },
+    {
+        "model": "store.store",
+        "fields": {
+            "id": 20754482,
+            "name": "커피언리미티드",
+            "industry": "Q",
+            "city": 11,
+            "country": 11110
+        }
+    },
+    {
+        "model": "store.store",
+        "fields": {
+            "id": 28476591,
+            "name": "한옥돼지마을대학로1호점",
+            "industry": "Q",
+            "city": 11,
+            "country": 11110
+        }
+    },
+    {
+        "model": "store.store",
+        "fields": {
+            "id": 23144791,
+            "name": "000간",
+            "industry": "Q",
+            "city": 11,
+            "country": 11110
+        }
+    },
+    {
+        "model": "store.store",
+        "fields": {
+            "id": 24453984,
+            "name": "신진상회",
+            "industry": "D",
+            "city": 11,
+            "country": 11110
+        }
+    },
+    {
+        "model": "store.store",
+        "fields": {
+            "id": 22845864,
+            "name": "종로명인단팥빵",
+            "industry": "Q",
+            "city": 11,
+            "country": 11110
+        }
+    },
+    {
+        "model": "store.store",
+        "fields": {
+            "id": 24324438,
+            "name": "계동마나님",
+            "industry": "D",
+            "city": 11,
+            "country": 11110
+        }
+    },
+    {
+        "model": "store.store",
+        "fields": {
+            "id": 24024624,
+            "name": "독도텔레콤",
+            "industry": "D",
+            "city": 11,
+            "country": 11110
+        }
+    },
+    {
+        "model": "store.store",
+        "fields": {
+            "id": 24081570,
+            "name": "넘버에이스",
+            "industry": "D",
+            "city": 11,
+            "country": 11110
+        }
+    },
+    {
+        "model": "store.store",
+        "fields": {
+            "id": 25201505,
+            "name": "아워홈동대문종합시장",
+            "industry": "D",
+            "city": 11,
+            "country": 11110
+        }
+    },
+    {
+        "model": "store.store",
+        "fields": {
+            "id": 20467577,
+            "name": "달개비자연음식전문점",
+            "industry": "Q",
+            "city": 11,
+            "country": 11110
+        }
+    },
+    {
+        "model": "store.store",
+        "fields": {
+            "id": 22202834,
+            "name": "영관상회",
+            "industry": "D",
+            "city": 11,
+            "country": 11110
+        }
+    },
+    {
+        "model": "store.store",
+        "fields": {
+            "id": 27524222,
+            "name": "타임시즌",
+            "industry": "D",
+            "city": 11,
+            "country": 11110
+        }
+    },
+    {
+        "model": "store.store",
+        "fields": {
+            "id": 24439659,
+            "name": "미니스톱",
+            "industry": "D",
+            "city": 11,
+            "country": 11110
+        }
+    },
+    {
+        "model": "store.store",
+        "fields": {
+            "id": 26186220,
+            "name": "보금장",
+            "industry": "D",
+            "city": 11,
+            "country": 11110
+        }
+    },
+    {
+        "model": "store.store",
+        "fields": {
+            "id": 24778371,
+            "name": "플라워이벤트",
+            "industry": "D",
+            "city": 11,
+            "country": 11110
+        }
+    },
+    {
+        "model": "store.store",
+        "fields": {
+            "id": 24260741,
+            "name": "세븐일레븐종로인의점",
+            "industry": "D",
+            "city": 11,
+            "country": 11110
+        }
+    },
+    {
+        "model": "store.store",
+        "fields": {
+            "id": 24560381,
+            "name": "수한복",
+            "industry": "D",
+            "city": 11,
+            "country": 11110
+        }
+    },
+    {
+        "model": "store.store",
+        "fields": {
+            "id": 24160971,
+            "name": "비마이프렌드",
+            "industry": "D",
+            "city": 11,
+            "country": 11110
+        }
+    },
+    {
+        "model": "store.store",
+        "fields": {
+            "id": 24482391,
+            "name": "김은숙뷰틱",
+            "industry": "D",
+            "city": 11,
+            "country": 11110
+        }
+    },
+    {
+        "model": "store.store",
+        "fields": {
+            "id": 15533150,
+            "name": "닭곰탕",
+            "industry": "Q",
+            "city": 11,
+            "country": 11110
+        }
+    },
+    {
+        "model": "store.store",
+        "fields": {
+            "id": 23994571,
+            "name": "시선",
+            "industry": "D",
+            "city": 11,
+            "country": 11110
+        }
+    },
+    {
+        "model": "store.store",
+        "fields": {
+            "id": 12682738,
+            "name": "신우",
+            "industry": "D",
+            "city": 11,
+            "country": 11110
+        }
+    },
+    {
+        "model": "store.store",
+        "fields": {
+            "id": 24527395,
+            "name": "무트크리에이션",
+            "industry": "D",
+            "city": 11,
+            "country": 11110
+        }
+    }
+]

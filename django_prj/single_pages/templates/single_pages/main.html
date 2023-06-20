@@ -1,0 +1,102 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Main</title>
+</head>
+<body>
+    <h1>메인 페이지 입니다.</h1>
+    {% for p in recent_posts %}
+    <!-- Blog Post -->
+    <div class="card mb-4">
+        {% if p.head_image %}
+        <img class="card-img-top" src="{{ p.head_image.url }}" alt="Card image cap">
+        {% else %}
+        <img class="card-img-top" src="https://picsum.photos/800/200" alt="random_image">
+        {% endif %}
+        {% if p.tags.exists %}
+            <br />
+            <i class = "fas fa-tags" style="display: inline-block">
+            {% for tag in p.tags.iterator %}
+                 | <a style="display: inline;" href = {{ tag.get_absolute_url }} > {{ tag }} </a>
+            {% endfor %}
+            |
+            </i>
+=======
+{% extends 'blog/base.html' %}
+
+{% block main_area %}
+>>>>>>> 62db073 (feat : 상세페이지 및 디테일한 기능 구현)
+=======
+{% extends 'blog/base.html' %}
+
+{% block main_area %}
+>>>>>>> main
+
+     <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .box {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .box h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .box p {
+            font-size: 16px;
+            color: #6c757d;
+        }
+    </style>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="box">
+                    <h2>자신의 경험 기록</h2>
+                    <p>나만의 경험을 기록하여 소중한 순간을 기억하세요.</p>
+                    <a href="/account-diary/" class="btn btn-primary diary-button">다이어리로 바로가기</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="box">
+                    <h2>경험과 소비 연결</h2>
+                    <p>경험을 소비와 연결하여 가계부로 활용하세요. 소비 내역과 경험을 함께 기록하여 효과적인 자금 관리를 할 수 있습니다.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="box">
+                    <h2>장소와 연동</h2>
+                    <p>경험한 장소와 연동하여 어디에서 어떤 활동을 했는지 쉽게 확인하세요. 다른 사용자들의 활동을 검색하여 도움을 받을 수 있습니다.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="box">
+                    <h2>나만의 경험 숨기기</h2>
+                    <p>자신이 작성한 경험을 비밀로 설정할 수 있어 공유 여부를 선택할 수 있습니다. 소중한 기억을 안전하게 보호하세요.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+<<<<<<< HEAD
+<<<<<<< HEAD
+    {% endfor %}
+
+</body>
+</html>
+=======
+{% endblock %}
+>>>>>>> 62db073 (feat : 상세페이지 및 디테일한 기능 구현)
+=======
+{% endblock %}
+>>>>>>> main

@@ -1,0 +1,53 @@
+{% extends 'blog/base.html' %}
+{% block main_area %}
+    <h1>{{ account_diary.title }}</h1>
+
+    <div class="mt-4">
+        <a href="{% url 'account_diary_update' account_diary.id %}" class="btn btn-primary">수정</a>
+        <a href="{% url 'account_diary_delete' account_diary.id %}" class="btn btn-danger">삭제</a>
+    </div>
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>작성자:</th>
+            <td>{{ account_diary.user.username }}</td>
+        </tr>
+        <tr>
+            <th>날짜:</th>
+            <td>{{ account_diary.date|date:"Y-m-d H:i" }}</td>
+        </tr>
+        <tr>
+            <th>구분:</th>
+            <td>{{ account_diary.get_type_display }}</td>
+        </tr>
+        <tr>
+            <th>가게:</th>
+            <td>{{ account_diary.store.name }}</td>
+        </tr>
+        <tr>
+            <th>가게 위치:</th>
+            <td>{{ account_diary.store.city.name }} {{ account_diary.store.country.name }}</td>
+        </tr>
+        <tr>
+            <th>계정 태그:</th>
+            <td>{{ account_diary.account_tag }}</td>
+        </tr>
+        <tr>
+            <th>금액:</th>
+            <td>{{ account_diary.amount }}원</td>
+        </tr>
+        <tr>
+            <th>공개 여부:</th>
+            <td>{{ account_diary.is_public }}</td>
+        </tr>
+        <tr>
+            <th>설명:</th>
+            <td>{{ account_diary.description }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    {% if account_diary.head_image %}
+        <img src="{{ account_diary.head_image.url }}" alt="Head Image">
+    {% endif %}
+{% endblock %}

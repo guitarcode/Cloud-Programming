@@ -1,0 +1,127 @@
+{% extends 'blog/base.html' %}
+
+{% block main_area %}
+    <h1>
+        {% if view_type == 'day' %}
+            <span id="display-date"></span>
+        {% elif view_type == 'month' %}
+            <span id="display-year-month"></span>
+        {% endif %}
+        내역
+    </h1>
+
+    <button class="btn btn-primary mr-2" onclick="redirectToCalendar()">캘린더</button>
+
+    {% if view_type == 'day' %}
+        <div class="text-right">
+            <a id="prev-day-link" href="#">어제</a>
+            |
+            <a id="next-day-link" href="#">내일</a>
+        </div>
+    {% elif view_type == 'month' %}
+        <div class="text-right">
+            <a id="prev-month-link" href="#">이전달</a>
+            |
+            <a id="next-month-link" href="#">다음달</a>
+        </div>
+    {% endif %}
+
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>날짜</th>
+            <th>구분</th>
+            <th>요약</th>
+            <th>분류</th>
+            <th>금액</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for data in datas %}
+            <tr>
+                <td>{{ data.date|date:"Y-m-d H:i" }}</td>
+                {% if data.type == 'IN' %}
+                    <td>수입</td>
+                {% else %}
+                    <td>지출</td>
+                {% endif %}
+                <td><a href="{{ data.get_absolute_url }}">{{ data.title }}</a></td>
+                <td>{{ data.account_tag }}</td>
+                <td>{{ data.amount }}원</td>
+                <td></td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="5">지출 및 수입 내역이 없습니다.</td>
+            </tr>
+        {% endfor %}
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="text-right">총 수입:</td>
+            <td class="text-right">{{ total_income|default:0 }}원</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="text-right">총 지출:</td>
+            <td class="text-right">{{ total_expenditure|default:0 }}원</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="text-right">차액:</td>
+            <td class="text-right">{{ difference|default:0 }}원</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const year = urlParams.get('year');
+            const month = urlParams.get('month');
+            const day = urlParams.get('date');
+
+            if ('{{ view_type }}' === 'day') {
+                const displayDate = document.getElementById('display-date');
+                displayDate.innerText = `${year}년 ${month}월 ${day}일`;
+
+                const prevDayLink = document.getElementById('prev-day-link');
+                const nextDayLink = document.getElementById('next-day-link');
+
+                const prevDay = new Date(year, month - 1, day - 1);
+                prevDayLink.href = `?year=${prevDay.getFullYear()}&month=${prevDay.getMonth() + 1}&date=${prevDay.getDate()}`;
+
+                const nextDay = new Date(year, month - 1, +day + 1);
+                nextDayLink.href = `?year=${nextDay.getFullYear()}&month=${nextDay.getMonth() + 1}&date=${nextDay.getDate()}`;
+            } else if ('{{ view_type }}' === 'month') {
+                const displayYearMonth = document.getElementById('display-year-month');
+                displayYearMonth.innerText = `${year}년 ${month}월`;
+
+                const prevMonthLink = document.getElementById('prev-month-link');
+                const nextMonthLink = document.getElementById('next-month-link');
+
+                const prevMonth = new Date(year, month - 2);
+                prevMonthLink.href = `?year=${prevMonth.getFullYear()}&month=${prevMonth.getMonth() + 1}`;
+
+                const nextMonth = new Date(year, month);
+                nextMonthLink.href = `?year=${nextMonth.getFullYear()}&month=${nextMonth.getMonth() + 1}`;
+            }
+        });
+
+        function redirectToCalendar() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const year = urlParams.get('year');
+            const month = urlParams.get('month');
+
+            const calendarUrl = `/account-diary?year=${year}&month=${month}`;
+            window.location.href = calendarUrl;
+        }
+    </script>
+{% endblock %}

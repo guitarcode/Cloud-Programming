@@ -1,0 +1,115 @@
+{% extends 'blog/base.html' %}
+
+{% block main_area %}
+
+    <form id="filter-form" class="form-inline mb-3">
+        <div class="form-group">
+            <label for="city" class="mr-2">도시:</label>
+            <select name="city_id" id="city" class="form-control mr-2">
+                <option value="">All</option>
+                {% for city in cities %}
+                    <option value="{{ city.id }}"
+                            {% if request.GET.city_id == city.id %}selected{% endif %}>{{ city.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="country" class="mr-2">군구:</label>
+            <select name="country_id" id="country" class="form-control mr-2">
+                <option value="">All</option>
+                {% for country in countries %}
+                    <option value="{{ country.id }}"
+                            {% if request.GET.country_id == country.id %}selected{% endif %}>{{ country.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="industry" class="mr-2">분류:</label>
+            <select name="industry_id" id="industry" class="form-control mr-2">
+                <option value="">All</option>
+                {% for industry in industries %}
+                    <option value="{{ industry.id }}"
+                            {% if request.GET.industry_id == industry.id %}selected{% endif %}>{{ industry.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary mr-2">검색</button>
+        {% if user.is_superuser %}
+        <div class="row">
+            <div class="col">
+                <button type="button" class="btn btn-primary"><a href="/store/create" style="color: #ffffff;">장소 추가하기</a></button>
+            </div>
+        </div>
+    {% endif %}
+
+    </form>
+
+
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-lg-9 mx-auto">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Store Name</th>
+                        <th>Country</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for store in stores %}
+                        <tr>
+                            <td><a href="{{ store.get_absolute_url }}">{{ store.name }}</a></td>
+                            <td>{{ store.country.name }}</td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="2">No stores found.</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+                <div id="pagination" class="text-center">
+                    <!-- 페이지 이동을 위한 버튼 -->
+                    {% if stores.has_previous %}
+                        <a href="?{% if request.GET.city_id %}city_id={{ request.GET.city_id }}&{% endif %}{% if request.GET.country_id %}country_id={{ request.GET.country_id }}&{% endif %}{% if request.GET.industry_id %}industry_id={{ request.GET.industry_id }}&{% endif %}page={{ stores.previous_page_number }}">Previous</a>
+                    {% endif %}
+
+                    <span>{{ stores.number }}</span>
+
+                    {% if stores.has_next %}
+                        <a href="?{% if request.GET.city_id %}city_id={{ request.GET.city_id }}&{% endif %}{% if request.GET.country_id %}country_id={{ request.GET.country_id }}&{% endif %}{% if request.GET.industry_id %}industry_id={{ request.GET.industry_id }}&{% endif %}page={{ stores.next_page_number }}">Next</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // 필터링 폼 제출 시 queryString 유지 및 페이지 이동 처리
+        document.getElementById('filter-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            const queryString = new URLSearchParams(formData).toString();
+            const url = window.location.pathname + '?' + queryString;
+            window.location.href = url;
+        });
+
+        // 페이지 이동 시 queryString 유지
+
+
+        // 드롭다운 필드의 default 값 설정
+        const urlParams = new URLSearchParams(window.location.search);
+        const defaultCityId = urlParams.get('city_id');
+        const defaultCountryId = urlParams.get('country_id');
+        const defaultIndustryId = urlParams.get('industry_id');
+
+        document.getElementById('city').value = defaultCityId || '';
+        document.getElementById('country').value = defaultCountryId || '';
+        document.getElementById('industry').value = defaultIndustryId || '';
+    </script>
+{% endblock %}

@@ -1,0 +1,44 @@
+[
+  {
+    "model": "store.industry",
+    "pk": "D",
+    "fields": {
+      "name": "소매"
+    }
+  },
+  {
+    "model": "store.industry",
+    "pk": "Q",
+    "fields": {
+      "name": "음식"
+    }
+  },
+  {
+    "model": "store.industry",
+    "pk": "N",
+    "fields": {
+      "name": "관광/여가/오락"
+    }
+  },
+  {
+    "model": "store.city",
+    "pk": 11,
+    "fields": {
+      "name": "서울특별시"
+    }
+  },
+  {
+    "model": "store.country",
+    "pk": 11110,
+    "fields": {
+      "name": "종로구"
+    }
+  },
+  {
+    "model": "store.country",
+    "pk": 11410,
+    "fields": {
+      "name": "서대문구"
+    }
+  }
+]
